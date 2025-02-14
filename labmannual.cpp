@@ -347,6 +347,7 @@ int main(){
 
 
    //q15->
+   /*
    int a, b, c, d;
 
     
@@ -358,40 +359,563 @@ int main(){
 
     
     cout << "The result of (a^b + c&d) is: " << result << endl;
-
-    
-
-
-    
-
-
-    
-
-
-    
-
-
-
-
-
-    
-
-
-
-  
-  
-  
-
-
-
-
-
-  
-   return 0;
+}
+ //16->
+#include<iostream>
+using namespace std;
+bool oppositeSigns(int a, int b) {
+    return (a ^ b) < 0;  
 }
 
-  
+int main() {
+    cout << boolalpha;
+    cout << oppositeSigns(5, -3) << endl;  
+    cout << oppositeSigns(-7, 2) << endl;  
+    cout << oppositeSigns(4, 6) << endl;   
+    cout << oppositeSigns(-2, -8) << endl; 
+   
+   return 0;
+}
+  //17->
+   include <iostream>
+using namespace std;
 
+int divideInt(int dividend, int divisor) {
+    if (divisor == 0) {
+        cout << "Error: Division by zero is not allowed." << endl;
+        return 0;
+    }
+
+    int quotient = 0;
+    while (dividend >= divisor) {
+        dividend -= divisor;
+        quotient++;
+    }
+
+    return quotient;
+}
+
+
+double divideFloat(double dividend, double divisor) {
+    if (divisor == 0) {
+        cout << "Error: Division by zero is not allowed." << endl;
+        return 0;
+    }
+
+    double quotient = 0;
+    int integerPart = divideInt(static_cast<int>(dividend), static_cast<int>(divisor));
+    double remainder = dividend - integerPart * divisor;
+
+    quotient = integerPart + (remainder / divisor);
+
+    return quotient;
+}
+
+int main() {
+    int choice;
+    cout << "Choose an option:" << endl;
+    cout << "1. Integer Division" << endl;
+    cout << "2. Floating-point Division" << endl;
+    cin >> choice;
+
+    if (choice == 1) {
+        int dividend, divisor;
+        cout << "Enter dividend: ";
+        cin >> dividend;
+        cout << "Enter divisor: ";
+        cin >> divisor;
+
+        int result = divideInt(dividend, divisor);
+        cout << "Result: " << result << endl;
+    } else if (choice == 2) {
+        double dividend, divisor;
+        cout << "Enter dividend: ";
+        cin >> dividend;
+        cout << "Enter divisor: ";
+        cin >> divisor;
+
+        double result = divideFloat(dividend, divisor);
+        cout << "Result: " << result << endl;
+    } else {
+        cout << "Invalid choice." << endl;
+    }
+
+    return 0;
+}
+//18->
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num, shift;
+
+    cout << "Enter an integer: ";
+    cin >> num;
+    cout << "Enter the number of bits to shift: ";
+    cin >> shift;
+
+    int leftShiftResult = (num << shift) | (num >> (32 - shift));
+    int rightShiftResult = (num >> shift) | (num << (32 - shift));
+
+    cout << "Original Number: " << num << endl;
+    cout << "Circular Left Shift (" << shift << " bits): " << leftShiftResult << endl;
+    cout << "Circular Right Shift (" << shift << " bits): " << rightShiftResult << endl;
+
+    return 0;
+}
+    //19->
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int marks;
+    cout << "Enter marks: ";
+    cin >> marks;
+
+    if (marks >= 90) cout << "Grade: A\n";
+    else if (marks >= 80) cout << "Grade: B\n";
+    else if (marks >= 70) cout << "Grade: C\n";
+    else if (marks >= 60) cout << "Grade: D\n";
+    else cout << "Grade: F\n";
+
+    return 0;
+}
+//20->
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int choice;
+    float a, b;
+    do {
+        cout << "\nMenu:\n1. Addition\n2. Subtraction\n3. Multiplication\n4. Division\n5. Exit\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        if (choice >= 1 && choice <= 4) {
+            cout << "Enter two numbers: ";
+            cin >> a >> b;
+        }
+
+        switch (choice) {
+            case 1: cout << "Result: " << a + b << endl; break;
+            case 2: cout << "Result: " << a - b << endl; break;
+            case 3: cout << "Result: " << a * b << endl; break;
+            case 4:
+                if (b != 0) cout << "Result: " << a / b << endl;
+                else cout << "Error! Division by zero.\n";
+                break;
+            case 5: cout << "Exiting...\n"; break;
+            default: cout << "Invalid choice!\n";
+        }
+    } while (choice != 5);
+
+    return 0;
+}
+
+//21->
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int year;
+    cout << "Enter a year: ";
+    cin >> year;
+
+    if (year % 4 == 0) {
+        if (year % 100 == 0) {
+            if (year % 400 == 0) cout << "Leap Year\n";
+            else cout << "Not a Leap Year\n";
+        } else cout << "Leap Year\n";
+    } else cout << "Not a Leap Year\n";
+
+    return 0;
+}
+
+
+---
+
+//22->
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, a = 0, b = 1, next;
+    cout << "Enter n: ";
+    cin >> n;
+
+    cout << "Fibonacci series: ";
+    for (int i = 0; i < n; i++) {
+        cout << a << " ";
+        next = a + b;
+        a = b;
+        b = next;
+    }
+
+    return 0;
+}
+
+
+---
+
+//23->
+
+#include <iostream>
+using namespace std;
+
+bool isPrime(int num) {
+    if (num < 2) return false;
+    int i = 2;
+    while (i * i <= num) {
+        if (num % i == 0) return false;
+        i++;
+    }
+    return true;
+}
+
+int main() {
+    int num;
+    cout << "Enter a number: ";
+    cin >> num;
+
+    if (isPrime(num)) cout << "Prime Number\n";
+    else cout << "Not a Prime Number\n";
+
+    return 0;
+}
+
+
+---
+
+//24->
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int num, fact = 1;
+    cout << "Enter a number: ";
+    cin >> num;
+
+    int i = 1;
+    do {
+        fact *= i;
+        i++;
+    } while (i <= num);
+
+    cout << "Factorial: " << fact << endl;
+    return 0;
+}
+
+
+---
+
+//25->
+
+#include <iostream>
+#include <limits>
+using namespace std;
+
+int main() {
+    int num, sum = 0, count = 0, minNum = INT_MAX, maxNum = INT_MIN;
+    string input;
+
+    while (true) {
+        cout << "Enter an integer (or type 'exit' to stop): ";
+        cin >> input;
+
+        if (input == "exit") break;
+
+        try {
+            num = stoi(input);
+            sum += num;
+            count++;
+            minNum = min(minNum, num);
+            maxNum = max(maxNum, num);
+        } catch (...) {
+            cout << "Invalid input. Please enter an integer.\n";
+        }
+    }
+
+    if (count > 0) {
+        cout << "Sum: " << sum << endl;
+        cout << "Count: " << count << endl;
+        cout << "Min: " << minNum << endl;
+        cout << "Max: " << maxNum << endl;
+    } else {
+        cout << "No valid numbers entered.\n";
+    }
+
+    return 0;
+}
+//26->
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n, count = 0, num = 2; 
+
+    cout << "Enter the number of prime numbers to generate: ";
+    cin >> n;
+
+    cout << "The first " << n << " prime numbers are: ";
+
+    while (count < n) {
+        int isPrime = true; 
+       
+        for (int i = 2; i <= num / 2; i++) {
+            if (num % i == 0) {
+                isPrime = false; 
+                break;
+            }
+        }
+
+        if (isPrime) {
+            cout << num << " "; 
+            count++;
+        }
+        num++;
+    }
+
+    cout << endl;
+    return 0;
+}
+    //27->
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+    int lower, upper;
+
+    cout << "Enter the lower range: ";
+    cin >> lower;
+    cout << "Enter the upper range: ";
+    cin >> upper;
+
+    cout << "Armstrong numbers between " << lower << " and " << upper << " are: ";
+
+    for (int num = lower; num <= upper; num++) {
+        int sum = 0, temp = num, digits = 0;
+
+        
+        while (temp != 0) {
+            temp /= 10;
+            digits++;
+        }
+
+        temp = num; 
+        while (temp != 0) {
+            int digit = temp % 10;
+            sum += pow(digit, digits);
+            temp /= 10;
+        }
+
+      
+        if (sum == num) {
+            cout << num << " ";
+        }
+    }
+
+    cout << endl;
+    return 0;
+}
+    //28->
+    #include <iostream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+
+int main() {
+    srand(time(0));
+    int number = rand() % 100 + 1, guess, attempts = 5;
+
+    cout << "Guess the number (1-100). You have " << attempts << " attempts.\n";
+    while (attempts--) {
+        cout << "Enter your guess: ";
+        cin >> guess;
+
+        if (guess == number) {
+            cout << "Correct! You win!\n";
+            return 0;
+        }
+        cout << (guess > number ? "Too high!\n" : "Too low!\n");
+    }
+    cout << "You lost! The number was " << number << ".\n";
+    return 0;
+}
+    //29->
+    #include <iostream>
+using namespace std;
+
+int main() {
+    int num = 51; // Start checking from the first number greater than 50
+
+    while (true) {
+        if (num % 7 == 0) {
+            cout << "The first number greater than 50 that is divisible by 7 is: " << num << endl;
+            break; // Exit the loop once the number is found
+        }
+        num++; // Increment the number to check the next one
+    }
+
+    return 0;
+}
+    //30->
+    #include <iostream>
+using namespace std;
+
+int main() {
+    int sum = 0;
+    for (int i = 1; i <= 500; i++) {
+        if (i % 3 == 0 && i % 7 == 0) continue;
+        if (sum + i > 1000) break;
+        cout << i << " ";
+        sum += i;
+    }
+    return 0;
+}
+    //31->
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int reverseNumber(int num) {
+    int reversed = 0;
+    while (num > 0) {
+        reversed = reversed * 10 + num % 10;
+        num /= 10;
+    }
+    return reversed;
+}
+
+bool isPalindrome(int num) {
+    return num == reverseNumber(num);
+}
+
+int main() {
+    int number;
+
+    cout << "Enter a number: ";
+    cin >> number;
+
+    int reversed = reverseNumber(number);
+    cout << "Reversed number: " << reversed << endl;
+
+    if (isPalindrome(reversed)) {
+        cout << "The reversed number is a palindrome." << endl;
+    } else {
+        cout << "The reversed number is not a palindrome." << endl;
+    }
+
+    return 0;
+}
+//32->
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter array size: ";
+    cin >> n;
+    int arr[n];
+
+    cout << "Enter array elements: ";
+    for (int i = 0; i < n; i++) cin >> arr[i];
+
+    int largest = arr[0], secondLargest = -1;
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > largest) {
+            secondLargest = largest;
+            largest = arr[i];
+        } else if (arr[i] > secondLargest && arr[i] != largest) {
+            secondLargest = arr[i];
+        }
+    }
+
+    cout << "Second largest element: " << secondLargest << endl;
+    return 0;
+}
+//33->
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    double num;
+    cout << "Enter a floating-point number: ";
+    cin >> num;
+
+    cout << "Number with high precision: " << setprecision(20) << num << endl;
+
+    float checkNum = num; // Convert to float (single precision)
+    double backToDouble = checkNum; // Convert back to double
+
+    if (num == backToDouble) {
+        cout << "The number can be exactly represented in binary.\n";
+    } else {
+        cout << "The number cannot be exactly represented in binary.\n";
+    }
+
+    return 0;
+}
+//34->
+#include <iostream>
+using namespace std;
+
+int main() {
+    int rows, cols;
+    cout << "Enter number of rows and columns: ";
+    cin >> rows >> cols;
+
+    int arr[rows][cols];
+    cout << "Enter array elements:\n";
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            cin >> arr[i][j];
+        }
+    }
+
+    cout << "Formatted 2D Array:\n";
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            cout << arr[i][j] << "\t";
+        }
+        cout << endl;
+    }
+    return 0;
+}
+//35->
+#include <iostream>
+using namespace std;
+
+int gcd(int a, int b) {
+    while (b) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
+
+int lcm(int a, int b) {
+    return (a / gcd(a, b)) * b;
+}
+
+int main() {
+    int num1, num2;
+    cout << "Enter two numbers: ";
+    cin >> num1 >> num2;
+
+    cout << "GCD: " << gcd(num1, num2) << endl;
+    cout << "LCM: " << lcm(num1, num2) << endl;
+
+    return 0;
+}
 
    
 
